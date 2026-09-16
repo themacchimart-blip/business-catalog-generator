@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="The Macchi Mart - Online Aquarium Store"
+  >
+
+  <title>The Macchi Mart | Online Catalog</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="brand">
+      <div class="logo">🐠</div>
+
+      <div>
+        <h1>The Macchi Mart</h1>
+        <p>Aquarium • Fish • Plants • Accessories</p>
+      </div>
+    </div>
+
+    <button
+      class="cart-button"
+      id="cartButton"
+      type="button"
+    >
+      🛒 Cart
+      <span id="cartCount">0</span>
+    </button>
+
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <p class="hero-small">
+        Welcome to
+      </p>
+
+      <h2>
+        The Macchi Mart
+      </h2>
+
+      <p>
+        Explore aquarium fish, aquatic plants,
+        food and accessories.
+      </p>
+
+      <a
+        href="#products"
+        class="shop-button"
+      >
+        Shop Now
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- SEARCH -->
+  <section class="controls">
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search products..."
+      aria-label="Search products"
+    >
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+
+    <button
+      class="category-btn active"
+      data-category="all"
+      type="button"
+    >
+      All
+    </button>
+
+    <button
+      class="category-btn"
+      data-category="Fish"
+      type="button"
+    >
+      🐠 Fish
+    </button>
+
+    <button
+      class="category-btn"
+      data-category="Plants"
+      type="button"
+    >
+      🌿 Plants
+    </button>
+
+    <button
+      class="category-btn"
+      data-category="Food"
+      type="button"
+    >
+      🍽️ Food
+    </button>
+
+    <button
+      class="category-btn"
+      data-category="Accessories"
+      type="button"
+    >
+      🪨 Accessories
+    </button>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <main
+    class="products-section"
+    id="products"
+  >
+
+    <div class="section-heading">
+
+      <div>
+        <p class="section-small">
+          OUR CATALOG
+        </p>
+
+        <h2>
+          Products
+        </h2>
+      </div>
+
+      <p id="productResultText">
+        Browse our collection
+      </p>
+
+    </div>
+
+
+    <!-- Products automatically come here -->
+    <div
+      class="product-grid"
+      id="productGrid"
+    ></div>
+
+  </main>
+
+
+  <!-- CART -->
+  <aside
+    class="cart-panel"
+    id="cartPanel"
+  >
+
+    <div class="cart-header">
+
+      <div>
+        <p class="section-small">
+          YOUR ORDER
+        </p>
+
+        <h2>
+          Shopping Cart
+        </h2>
+      </div>
+
+      <button
+        id="closeCart"
+        class="close-cart"
+        type="button"
+        aria-label="Close cart"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-items"
+      id="cartItems"
+    ></div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>Total</span>
+
+        <strong>
+          ₹<span id="cartTotal">0</span>
+        </strong>
+
+      </div>
+
+
+      <button
+        id="whatsappOrder"
+        class="whatsapp-button"
+        type="button"
+      >
+        💬 Order on WhatsApp
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- CART BACKGROUND -->
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
+
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <p class="section-small">
+      WHY CHOOSE US
+    </p>
+
+    <h2>
+      Everything for your aquarium
+    </h2>
+
+
+    <div class="features">
+
+      <div class="feature">
+        <span>🐠</span>
+
+        <h3>Quality Products</h3>
+
+        <p>
+          Carefully selected aquarium products.
+        </p>
+      </div>
+
+
+      <div class="feature">
+        <span>💬</span>
+
+        <h3>Easy Ordering</h3>
+
+        <p>
+          Send your complete order directly
+          through WhatsApp.
+        </p>
+      </div>
+
+
+      <div class="feature">
+        <span>📱</span>
+
+        <h3>Mobile Friendly</h3>
+
+        <p>
+          Browse the catalog easily
+          from your phone.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <h2>
+      The Macchi Mart
+    </h2>
+
+    <p>
+      Your Aquarium Marketplace
+    </p>
+
+    <p class="copyright">
+      © <span id="currentYear"></span>
+      The Macchi Mart
+    </p>
+
+  </footer>
+
+
+  <!-- PRODUCT DATA -->
+  <script src="products.js"></script>
+
+  <!-- WEBSITE LOGIC -->
+  <script src="script.js"></script>
+
+</body>
+</html>
