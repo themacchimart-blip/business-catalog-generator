@@ -8,15 +8,6 @@
    BUSINESS SETTINGS
 ========================================= */
 
-// IMPORTANT:
-// Replace this number later with your
-// actual WhatsApp number including country code.
-//
-// Example India:
-// 919876543210
-//
-// Do NOT use +, spaces or dashes.
-
 const WHATSAPP_NUMBER = "918652065885";
 
 
@@ -33,18 +24,35 @@ let searchText = "";
    ELEMENTS
 ========================================= */
 
-const productGrid = document.getElementById("productGrid");
-const searchInput = document.getElementById("searchInput");
-const categoryButtons = document.querySelectorAll(".category-btn");
+const productGrid =
+  document.getElementById("productGrid");
 
-const cartButton = document.getElementById("cartButton");
-const cartPanel = document.getElementById("cartPanel");
-const closeCartButton = document.getElementById("closeCart");
-const overlay = document.getElementById("overlay");
+const searchInput =
+  document.getElementById("searchInput");
 
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
+const categoryButtons =
+  document.querySelectorAll(".category-btn");
+
+const cartButton =
+  document.getElementById("cartButton");
+
+const cartPanel =
+  document.getElementById("cartPanel");
+
+const closeCartButton =
+  document.getElementById("closeCart");
+
+const overlay =
+  document.getElementById("overlay");
+
+const cartItems =
+  document.getElementById("cartItems");
+
+const cartCount =
+  document.getElementById("cartCount");
+
+const cartTotal =
+  document.getElementById("cartTotal");
 
 const whatsappOrderButton =
   document.getElementById("whatsappOrder");
@@ -57,11 +65,13 @@ const currentYear =
 
 
 /* =========================================
-   CURRENCY
+   PRICE FORMAT
 ========================================= */
 
 function formatPrice(price) {
+
   return Number(price).toLocaleString("en-IN");
+
 }
 
 
@@ -71,27 +81,31 @@ function formatPrice(price) {
 
 function displayProducts() {
 
-  let filteredProducts = products.filter((product) => {
+  const filteredProducts =
+    products.filter((product) => {
 
-    const categoryMatch =
-      selectedCategory === "all" ||
-      product.category === selectedCategory;
+      const categoryMatch =
+        selectedCategory === "all" ||
+        product.category === selectedCategory;
 
-    const searchMatch =
-      product.name
-        .toLowerCase()
-        .includes(searchText.toLowerCase()) ||
 
-      product.description
-        .toLowerCase()
-        .includes(searchText.toLowerCase()) ||
+      const searchMatch =
+        product.name
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
 
-      product.category
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
+        product.description
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
 
-    return categoryMatch && searchMatch;
-  });
+        product.category
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+
+
+      return categoryMatch && searchMatch;
+
+    });
 
 
   productGrid.innerHTML = "";
@@ -100,16 +114,26 @@ function displayProducts() {
   if (filteredProducts.length === 0) {
 
     productGrid.innerHTML = `
+
       <div class="empty-cart">
+
         <h3>No products found</h3>
-        <p>Try another search or category.</p>
+
+        <p>
+          Try another search or category.
+        </p>
+
       </div>
+
     `;
+
 
     productResultText.textContent =
       "0 products found";
 
+
     return;
+
   }
 
 
@@ -118,7 +142,9 @@ function displayProducts() {
     const productCard =
       document.createElement("article");
 
-    productCard.className = "product-card";
+
+    productCard.className =
+      "product-card";
 
 
     productCard.innerHTML = `
@@ -133,53 +159,69 @@ function displayProducts() {
         "
       >
 
+
       <div class="product-info">
 
         <span class="product-category">
           ${product.category}
         </span>
 
+
         <h3 class="product-name">
           ${product.name}
         </h3>
+
 
         <p class="product-description">
           ${product.description}
         </p>
 
+
         <div class="product-bottom">
 
           <span class="product-price">
+
             ₹${formatPrice(product.price)}
+
           </span>
+
 
           ${
             product.inStock
 
-              ? `
-                <button
-                  class="add-cart"
-                  type="button"
-                  onclick="addToCart(${product.id})"
-                >
-                  Add to Cart
-                </button>
-              `
+            ? `
 
-              : `
-                <button
-                  class="add-cart"
-                  type="button"
-                  disabled
-                >
-                  Out of Stock
-                </button>
-              `
+              <button
+                class="add-cart"
+                type="button"
+                onclick="addToCart(${product.id})"
+              >
+
+                Add to Cart
+
+              </button>
+
+            `
+
+            : `
+
+              <button
+                class="add-cart"
+                type="button"
+                disabled
+              >
+
+                Out of Stock
+
+              </button>
+
+            `
           }
 
         </div>
 
       </div>
+
     `;
 
 
@@ -190,6 +232,7 @@ function displayProducts() {
 
   productResultText.textContent =
     `${filteredProducts.length} products found`;
+
 }
 
 
@@ -197,12 +240,18 @@ function displayProducts() {
    SEARCH
 ========================================= */
 
-searchInput.addEventListener("input", (event) => {
+searchInput.addEventListener(
+  "input",
+  (event) => {
 
-  searchText = event.target.value.trim();
+    searchText =
+      event.target.value.trim();
 
-  displayProducts();
-});
+
+    displayProducts();
+
+  }
+);
 
 
 /* =========================================
@@ -211,44 +260,56 @@ searchInput.addEventListener("input", (event) => {
 
 categoryButtons.forEach((button) => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-    categoryButtons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
+      categoryButtons.forEach((btn) => {
 
-    button.classList.add("active");
+        btn.classList.remove("active");
 
-    selectedCategory =
-      button.dataset.category;
+      });
 
-    displayProducts();
 
-  });
+      button.classList.add("active");
+
+
+      selectedCategory =
+        button.dataset.category;
+
+
+      displayProducts();
+
+    }
+  );
 
 });
 
 
 /* =========================================
-   ADD TO CART
+   ADD PRODUCT TO CART
 ========================================= */
 
 function addToCart(productId) {
 
   const product =
     products.find(
-      (item) => item.id === productId
+      (item) =>
+        item.id === productId
     );
 
 
   if (!product || !product.inStock) {
+
     return;
+
   }
 
 
   const existingItem =
     cart.find(
-      (item) => item.id === productId
+      (item) =>
+        item.id === productId
     );
 
 
@@ -259,10 +320,15 @@ function addToCart(productId) {
   } else {
 
     cart.push({
+
       id: product.id,
+
       name: product.name,
+
       price: product.price,
+
       quantity: 1
+
     });
 
   }
@@ -271,6 +337,7 @@ function addToCart(productId) {
   updateCart();
 
   openCart();
+
 }
 
 
@@ -282,18 +349,23 @@ function increaseQuantity(productId) {
 
   const item =
     cart.find(
-      (product) => product.id === productId
+      (product) =>
+        product.id === productId
     );
 
 
   if (!item) {
+
     return;
+
   }
 
 
   item.quantity += 1;
 
+
   updateCart();
+
 }
 
 
@@ -305,12 +377,15 @@ function decreaseQuantity(productId) {
 
   const item =
     cart.find(
-      (product) => product.id === productId
+      (product) =>
+        product.id === productId
     );
 
 
   if (!item) {
+
     return;
+
   }
 
 
@@ -322,24 +397,30 @@ function decreaseQuantity(productId) {
     removeFromCart(productId);
 
     return;
+
   }
 
 
   updateCart();
+
 }
 
 
 /* =========================================
-   REMOVE FROM CART
+   REMOVE PRODUCT
 ========================================= */
 
 function removeFromCart(productId) {
 
-  cart = cart.filter(
-    (item) => item.id !== productId
-  );
+  cart =
+    cart.filter(
+      (item) =>
+        item.id !== productId
+    );
+
 
   updateCart();
+
 }
 
 
@@ -355,29 +436,46 @@ function updateCart() {
   if (cart.length === 0) {
 
     cartItems.innerHTML = `
+
       <div class="empty-cart">
 
-        <div style="font-size:45px;">
+        <div
+          style="font-size:45px;"
+        >
+
           🛒
+
         </div>
 
-        <h3>Your cart is empty</h3>
+
+        <h3>
+          Your cart is empty
+        </h3>
+
 
         <p>
           Add some products to start your order.
         </p>
 
       </div>
+
     `;
 
   } else {
+
 
     cart.forEach((item) => {
 
       const cartItem =
         document.createElement("div");
 
-      cartItem.className = "cart-item";
+
+      cartItem.className =
+        "cart-item";
+
+
+      const itemTotal =
+        item.price * item.quantity;
 
 
       cartItem.innerHTML = `
@@ -388,10 +486,13 @@ function updateCart() {
             ${item.name}
           </h4>
 
+
           <p>
+
             ₹${formatPrice(item.price)}
             ×
             ${item.quantity}
+
           </p>
 
 
@@ -402,12 +503,16 @@ function updateCart() {
               type="button"
               onclick="decreaseQuantity(${item.id})"
             >
+
               −
+
             </button>
 
 
             <strong>
+
               ${item.quantity}
+
             </strong>
 
 
@@ -416,7 +521,9 @@ function updateCart() {
               type="button"
               onclick="increaseQuantity(${item.id})"
             >
+
               +
+
             </button>
 
 
@@ -425,7 +532,9 @@ function updateCart() {
               type="button"
               onclick="removeFromCart(${item.id})"
             >
+
               Remove
+
             </button>
 
           </div>
@@ -434,10 +543,11 @@ function updateCart() {
 
 
         <strong>
-          ₹${formatPrice(
-            item.price * item.quantity
-          )}
+
+          ₹${formatPrice(itemTotal)}
+
         </strong>
+
       `;
 
 
@@ -450,18 +560,24 @@ function updateCart() {
 
   const totalQuantity =
     cart.reduce(
+
       (total, item) =>
         total + item.quantity,
+
       0
+
     );
 
 
   const totalPrice =
     cart.reduce(
+
       (total, item) =>
         total +
         item.price * item.quantity,
+
       0
+
     );
 
 
@@ -471,6 +587,7 @@ function updateCart() {
 
   cartTotal.textContent =
     formatPrice(totalPrice);
+
 }
 
 
@@ -481,9 +598,12 @@ function updateCart() {
 function openCart() {
 
   cartPanel.classList.add("open");
+
   overlay.classList.add("show");
 
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow =
+    "hidden";
+
 }
 
 
@@ -494,11 +614,18 @@ function openCart() {
 function closeCart() {
 
   cartPanel.classList.remove("open");
+
   overlay.classList.remove("show");
 
-  document.body.style.overflow = "";
+  document.body.style.overflow =
+    "";
+
 }
 
+
+/* =========================================
+   CART BUTTON EVENTS
+========================================= */
 
 cartButton.addEventListener(
   "click",
@@ -531,76 +658,88 @@ function orderOnWhatsApp() {
     );
 
     return;
-  }
 
-
-  if (
-    WHATSAPP_NUMBER === "919999999999" ||
-    WHATSAPP_NUMBER.trim() === ""
-  ) {
-
-    alert(
-      "Please add the business WhatsApp number in script.js first."
-    );
-
-    return;
   }
 
 
   let message = "";
 
   message +=
-    "🐠 *THE MACCHI MART*%0A";
+    "🐠 *THE MACCHI MART*\n";
 
   message +=
-    "New Order Enquiry%0A%0A";
+    "━━━━━━━━━━━━━━━━━━\n";
+
+  message +=
+    "🛒 *NEW ORDER ENQUIRY*\n";
+
+  message +=
+    "━━━━━━━━━━━━━━━━━━\n\n";
 
 
   let total = 0;
 
 
-  cart.forEach((item, index) => {
+  cart.forEach(
+    (item, index) => {
 
-    const itemTotal =
-      item.price * item.quantity;
+      const itemTotal =
+        item.price *
+        item.quantity;
 
-    total += itemTotal;
+
+      total += itemTotal;
 
 
-    message +=
-      `${index + 1}. *${item.name}*%0A`;
+      message +=
+        `${index + 1}. *${item.name}*\n`;
 
-    message +=
-      `Qty: ${item.quantity}%0A`;
 
-    message +=
-      `Price: ₹${formatPrice(
-        item.price
-      )}%0A`;
+      message +=
+        `Quantity: ${item.quantity}\n`;
 
-    message +=
-      `Subtotal: ₹${formatPrice(
-        itemTotal
-      )}%0A%0A`;
 
-  });
+      message +=
+        `Price: ₹${formatPrice(item.price)}\n`;
+
+
+      message +=
+        `Subtotal: ₹${formatPrice(itemTotal)}\n\n`;
+
+    }
+  );
 
 
   message +=
-    `💰 *Total: ₹${formatPrice(total)}*%0A%0A`;
+    "━━━━━━━━━━━━━━━━━━\n";
+
 
   message +=
-    "Hello, I would like to order these products.";
+    `💰 *TOTAL: ₹${formatPrice(total)}*\n`;
+
+
+  message +=
+    "━━━━━━━━━━━━━━━━━━\n\n";
+
+
+  message +=
+    "Hello The Macchi Mart,\n";
+
+
+  message +=
+    "I would like to order the above products.";
 
 
   const whatsappURL =
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 
   window.open(
     whatsappURL,
     "_blank"
   );
+
 }
 
 
@@ -622,6 +761,7 @@ if (currentYear) {
 
   currentYear.textContent =
     new Date().getFullYear();
+
 }
 
 
