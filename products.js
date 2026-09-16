@@ -1,81 +1,191 @@
+/* =========================================
+   THE MACCHI MART
+   Product Catalog
+========================================= */
+
 const products = [
+
+  /* =======================================
+     FRESH FISH
+  ======================================= */
+
   {
     id: 1,
-    name: "Goldfish",
-    category: "Fish",
-    price: 150,
-    image: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80",
-    description: "Beautiful and active goldfish for your aquarium.",
+    name: "Surmai",
+    marathiName: "सुरमई",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/surmai.jpg",
+    description: "Fresh Surmai. Cleaning and cutting available.",
+    options: ["500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
   {
     id: 2,
-    name: "Guppy Pair",
-    category: "Fish",
-    price: 120,
-    image: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?auto=format&fit=crop&w=800&q=80",
-    description: "Colourful guppy pair for freshwater aquariums.",
+    name: "Pomfret",
+    marathiName: "पापलेट",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/pomfret.jpg",
+    description: "Fresh Pomfret selected for quality and freshness.",
+    options: ["500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
   {
     id: 3,
-    name: "Java Fern",
-    category: "Plants",
-    price: 180,
-    image: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=800&q=80",
-    description: "Easy-care aquatic plant suitable for beginners.",
+    name: "Bangda",
+    marathiName: "बांगडा",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/bangda.jpg",
+    description: "Fresh Bangda with cleaning and cutting option.",
+    options: ["500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
   {
     id: 4,
-    name: "Anubias",
-    category: "Plants",
-    price: 220,
-    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80",
-    description: "Hardy aquarium plant with beautiful green leaves.",
+    name: "Rawas",
+    marathiName: "रावस",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/rawas.jpg",
+    description: "Fresh Rawas for home delivery.",
+    options: ["500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
   {
     id: 5,
-    name: "Premium Fish Food",
-    category: "Food",
-    price: 250,
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
-    description: "Daily nutrition for healthy aquarium fish.",
+    name: "Bombil",
+    marathiName: "बॉम्बील",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/bombil.jpg",
+    description: "Fresh Bombil cleaned and hygienically packed.",
+    options: ["500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
   {
     id: 6,
-    name: "Dragon Stone",
-    category: "Accessories",
-    price: 250,
-    image: "https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=800&q=80",
-    description: "Natural decorative stone for aquascaping.",
+    name: "Prawns",
+    marathiName: "कोळंबी",
+    category: "Fresh Fish",
+    price: 0,
+    priceType: "today",
+    unit: "kg",
+    image: "images/prawns.jpg",
+    description: "Fresh prawns with cleaning option available.",
+    options: ["250g", "500g", "1kg"],
+    cleaning: true,
     inStock: true
   },
 
+
+  /* =======================================
+     PREMIUM DRY FISH
+  ======================================= */
+
   {
     id: 7,
-    name: "Aquarium Gravel",
-    category: "Accessories",
-    price: 199,
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
-    description: "Decorative gravel for freshwater aquarium setups.",
+    name: "Javla",
+    marathiName: "जावळा",
+    category: "Dry Fish",
+    price: 320,
+    priceType: "fixed",
+    unit: "kg",
+    image: "images/javla.jpg",
+    description: "Premium quality Javla, hygienically packed.",
+    options: ["250g", "500g", "1kg"],
+    cleaning: false,
     inStock: true
   },
 
   {
     id: 8,
-    name: "Sponge Filter",
-    category: "Accessories",
-    price: 299,
-    image: "https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=800&q=80",
-    description: "Simple biological filtration for freshwater tanks.",
+    name: "Kardi",
+    marathiName: "करडी",
+    category: "Dry Fish",
+    price: 650,
+    priceType: "fixed",
+    unit: "kg",
+    image: "images/kardi.jpg",
+    description: "Premium dry Kardi with hygienic packaging.",
+    options: ["250g", "500g", "1kg"],
+    cleaning: false,
+    inStock: true
+  },
+
+  {
+    id: 9,
+    name: "Dry Bombil",
+    marathiName: "सुका बॉम्बील",
+    category: "Dry Fish",
+    price: 480,
+    priceType: "fixed",
+    unit: "100 pcs",
+    image: "images/dry-bombil.jpg",
+    description: "Premium quality dried Bombil.",
+    options: ["100 pcs"],
+    cleaning: false,
+    inStock: true
+  },
+
+  {
+    id: 10,
+    name: "Sode / Dry Prawns",
+    marathiName: "सोडे / सुकी कोळंबी",
+    category: "Dry Fish",
+    price: 1750,
+    priceType: "fixed",
+    unit: "kg",
+    image: "images/sode.jpg",
+    description: "Premium dried prawns selected for quality.",
+    options: ["250g", "500g", "1kg"],
+    cleaning: false,
     inStock: true
   }
+
 ];
+
+
+/* =========================================
+   BUSINESS INFORMATION
+========================================= */
+
+const businessInfo = {
+
+  name: "The Macchi Mart",
+
+  tagline: "From Ocean to Plate",
+
+  whatsapp: "918652065885",
+
+  instagram: "@the_macchi_mart",
+
+  deliveryAreas: [
+    "Vile Parle",
+    "Andheri",
+    "Jogeshwari",
+    "Bhandup"
+  ]
+
+};
